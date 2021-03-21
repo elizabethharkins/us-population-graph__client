@@ -44,7 +44,7 @@ const SearchAndChart = (props) => {
 			}, 1000)
 		}
 	}, [alert])
-	
+
 
 	// handlers
 	const handleSubmit = (e) => {
@@ -129,7 +129,9 @@ const SearchAndChart = (props) => {
     		gridTemplateColumns: "max-content 700px", 
     		alignItems: "center",
     		margin: "2em auto",
-    		width: "50em"
+    		width: "50em",
+    		background: "#fff",
+    		padding: "1%"
   		},
   		chartWrapper: { 
   			maxWidth: 700, 
@@ -184,6 +186,7 @@ const SearchAndChart = (props) => {
 						onChange={ onChange }
 						onKeyDown={ onKeyDown }
 						value={ input }
+						placeholder="Enter a State"
 			  		/>
 			  	</label>
 			  	{ renderSearchResults() }
@@ -191,7 +194,7 @@ const SearchAndChart = (props) => {
 			</form>
 			{ alert && <p className="message">Success!</p> }
 			<div>
-				<h4>Your Search History</h4>
+				<h4 className="history-title">Your Search</h4>
 				<ul className="history">
 					{ list
 						.sort((a, b) => (a.year > b.year) ? 1 : -1)
