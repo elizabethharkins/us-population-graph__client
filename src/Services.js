@@ -1,7 +1,6 @@
 
 
 // to the api we go ...
-
 export function getList() {
 	return fetch("http://localhost:9000/states")
 		.then(data => data.json())

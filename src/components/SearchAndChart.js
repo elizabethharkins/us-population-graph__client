@@ -114,12 +114,12 @@ const SearchAndChart = (props) => {
 
   	// test
   	const chart_data = [
-  		{ label: "2014", x: 0, y: 0 },
+  		{ label: "2014", x: 0, y: 200 },
   		{ label: "2015", x: 1, y: 400 },
   		{ label: "2016", x: 2, y: 300 },
   		{ label: "2017", x: 3, y: 100 },
   		{ label: "2018", x: 4, y: 400 },
-  		{ label: "2019", x: 5, y: 500 },
+  		{ label: "2019", x: 5, y: 100 },
   		{ label: "2020", x: 6, y: 400 }
 	];
 
@@ -128,10 +128,12 @@ const SearchAndChart = (props) => {
     		display: "grid", 
     		gridTemplateColumns: "max-content 700px", 
     		alignItems: "center",
-    		margin: "2em auto",
+    		margin: "4em auto",
     		width: "50em",
     		background: "#fff",
-    		padding: "1%"
+    		padding: "1%",
+    		borderRadius: "var(--standard-radius)",
+    		boxShadow: "var(--box-shadow-sharp)"
   		},
   		chartWrapper: { 
   			maxWidth: 700, 
@@ -180,7 +182,7 @@ const SearchAndChart = (props) => {
 			<h1>U.S. Populations by State</h1>
 			<form onSubmit={ handleSubmit }>
 				<label>
-					<h3>- Select a state to chart population -</h3>
+					<h3>Select a state to chart population</h3>
 			  		<input
 						type="text"
 						onChange={ onChange }
@@ -190,7 +192,10 @@ const SearchAndChart = (props) => {
 			  		/>
 			  	</label>
 			  	{ renderSearchResults() }
-			  	<button type="submit">Submit</button>
+			  	<button type="submit">
+            		{ !alert && "Submit" }
+            		{ alert && "Loading" }
+          		</button>
 			</form>
 			{ alert && <p className="message">Success!</p> }
 			<div>
@@ -202,7 +207,8 @@ const SearchAndChart = (props) => {
 							<li key={ item.population }>
 								{ item.name } - { item.year } : { item.population.toLocaleString("en-US") }
 							</li>
-					) }
+						)
+					}
 				</ul>
 			</div>
 
@@ -216,7 +222,7 @@ const SearchAndChart = (props) => {
 		          		height={ 300 }
 		          		data={ chart_data }
 		          		horizontalGuides={ 5 }
-		          		precision={ 2 }
+		          		precision={ 0 }
 		          		verticalGuides={ 1 }
 		        	/>
 		      	</div>

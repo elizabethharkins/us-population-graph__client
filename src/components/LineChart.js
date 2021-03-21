@@ -164,7 +164,7 @@ LineChart.defaultProps = {
 	width: 500,
 	horizontalGuides: 4,
 	verticalGuides: null,
-	precision: 2
+	precision: 0
 };
 
 LineChart.propTypes = {
