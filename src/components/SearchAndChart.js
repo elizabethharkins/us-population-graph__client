@@ -23,7 +23,7 @@ const SearchAndChart = (props) => {
 	useEffect( () => {
 		let mounted = true;
 
-		if (list.length & !alert) {
+		if (!list.length & !alert) {
 			return;
 		}
 
@@ -33,6 +33,7 @@ const SearchAndChart = (props) => {
 					setList(items)
 				}
 			})
+
 		return () => mounted = false;
 	}, [alert, list])
 
@@ -43,18 +44,19 @@ const SearchAndChart = (props) => {
 			}, 1000)
 		}
 	}, [alert])
+	
 
 	// handlers
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		setItem(input)
+		updateLocation(input)
 			.then( () => {
 				setInput('');
 				setAlert(true);
 			})
 
-		updateLocation(input);
+		// updateLocation(input);
 	};
 
 	const onChange = (e) => {
@@ -190,10 +192,14 @@ const SearchAndChart = (props) => {
 			{ alert && <p className="message">Success!</p> }
 			<div>
 				<h4>Your Search History</h4>
-				<ul className="history">{ list.map(item => 
-					<li key={ item.id }>
-						{ item.name } - { item.year } : { item.population.toLocaleString("en-US") }
-					</li>) }
+				<ul className="history">
+					{ list
+						.sort((a, b) => (a.year > b.year) ? 1 : -1)
+						.map(item => 
+							<li key={ item.population }>
+								{ item.name } - { item.year } : { item.population.toLocaleString("en-US") }
+							</li>
+					) }
 				</ul>
 			</div>
 

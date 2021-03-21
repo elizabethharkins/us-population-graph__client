@@ -3,7 +3,7 @@
 // to the api we go ...
 
 export function getList() {
-	return fetch("http://localhost:9000/items")
+	return fetch("http://localhost:9000/states")
 		.then(data => data.json())
 }
 
@@ -18,8 +18,8 @@ export function setItem(item) {
 		.then(data => data.json())
 }
 
-export function updateLocation(item) {
-	return fetch("http://localhost:9000/states", {
+export async function updateLocation(item) {
+	return await fetch("http://localhost:9000/states", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json"
@@ -28,7 +28,7 @@ export function updateLocation(item) {
 	})
 		.then(data => data.json())
 		.then(data => {
-			console.log(data)
+			console.log(data);
 		})
 		.catch(console.err);
 		// .then(data => data.json())
