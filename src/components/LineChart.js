@@ -120,7 +120,7 @@ const LineChart = ({
 			const ratio = index / numberOfHorizontalGuides;
 
 			const yCoordinate = chartHeight - chartHeight * ratio + padding + FONT_SIZE / 2;
-	  
+
 			return (
 				<text
 					key={ index }
@@ -132,7 +132,7 @@ const LineChart = ({
 						fontFamily: "Helvetica"
 					}}
 				>
-					{ parseFloat(maximumYFromData * (index / PARTS)).toFixed(precision) }
+					{ parseFloat(maximumYFromData * (index / PARTS )).toFixed(precision) }
 				</text>
 			);
 		});
@@ -162,7 +162,7 @@ const LineChart = ({
 LineChart.defaultProps = {
 	height: 200,
 	width: 500,
-	horizontalGuides: 4,
+	horizontalGuides: 6,
 	verticalGuides: null,
 	precision: 0
 };

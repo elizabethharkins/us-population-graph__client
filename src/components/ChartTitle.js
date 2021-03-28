@@ -1,10 +1,18 @@
 
 
-import React from "react"
+import React from "react";
 import PropTypes from "prop-types";
 
+
+const title_styles = {
+	textAlign: "center", 
+	marginBottom: "-1em", 
+	width: "fit-content",
+	margin: "1em auto -2em auto",
+}
+
 const ChartTitle = ({ text }) => (
-	<h4 style={ {textAlign: "center", marginBottom: "-1em"} }>{ text }</h4>
+	<h4 style={ title_styles }>{ text }</h4>
 );
 
 ChartTitle.propTypes = {
@@ -12,3 +20,4 @@ ChartTitle.propTypes = {
 }
 
 export default ChartTitle;
+
